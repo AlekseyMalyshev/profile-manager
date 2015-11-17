@@ -7,6 +7,8 @@
       form#profile(action='#', method='post')
         fieldset
           .fields
+            img#avatar(src=user.avatar)
+          .fields
             input#name(type='text', placeholder='Name', value=user.name, required, autofocus)
           .fields
             input#pass(type='password', placeholder='Password', required)
@@ -26,8 +28,6 @@
             input#state(type='text', placeholder='State', value=user.state)
           .fields
             input#avatar(type='text', placeholder='Avatar', value=user.avatar)
-          .fields
-            img#avatar(src='#')
           .fields
             .col-sm-6
               button.btn.btn-md.btn-primary.btn-block(type='reset')
