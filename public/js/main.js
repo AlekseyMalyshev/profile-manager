@@ -39,6 +39,8 @@ function userCreated() {
 
 function notLogged() {
   $('button#profile').css('display', 'none');
+  $('button#others').css('display', 'none');
+  $('button#register').css('display', 'inline-block');
   $('form.login>input').css('display', 'inline-block');
   $('form.login>input').attr('required');
   $('form.login>button#login').text('Login');
@@ -50,6 +52,8 @@ function loginOK(data) {
   user = data;
 
   $('button#profile').css('display', 'inline-block');
+  $('button#others').css('display', 'inline-block');
+  $('button#register').css('display', 'none');
   $('form.login>input').css('display', 'none');
   $('form.login>input').removeAttr('required');
   $('form.login>button#login').text('Logout');
