@@ -1,0 +1,88 @@
+
+h2.title {
+  margin: 5px;
+  display: inline;
+}
+
+div.top {
+  margin-top: 30px;
+}
+
+form.login {
+  display: inline-block;
+  text-align: right;
+}
+
+form.login>button,
+form.login>input {
+  margin: 5px;
+  outline: none;
+}
+
+div.message {
+  background-color: #eeeeee;
+  border: 1px solid #cccccc;
+}
+
+i.fa-plus-square-o,
+i.fa-pencil-square-o,
+i.fa-trash-o {
+  cursor: pointer;
+  padding: 3px;
+}
+
+i.fa-plus-square-o:hover,
+i.fa-pencil-square-o:hover {
+  color: #449d44;
+}
+
+i.fa-trash-o:hover {
+  color: #c9302c;
+}
+
+i.fa-plus-square-o:active,
+i.fa-pencil-square-o:active,
+i.fa-trash-o:active {
+  background-color: #bbbbbb;
+}
+
+input.editbox {
+  position: absolute;
+  outline: none;
+  border: none;
+  padding: 0px;
+}
+
+div.message div>div {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 3px;
+}
+
+div.message div.time {
+  font-size: 12px;
+  width: 120px;
+}
+
+div.message div.author {
+  font-weight: bolder;
+  width: 80px;
+}
+
+div.message div.text {
+  min-width: 200px;
+  /*width: 100%;*/
+}
+
+form#profile {
+  padding-bottom: 50px;
+}
+
+div.fields {
+  margin: 0px 0px 15px 0px;
+}
+
+div.fields>input {
+  width: 100%;
+}
