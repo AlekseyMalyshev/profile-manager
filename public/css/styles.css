@@ -83,6 +83,7 @@ div.fields {
   margin: 0px 0px 15px 0px;
 }
 
+textarea,
 div.fields>input {
   width: 100%;
 }

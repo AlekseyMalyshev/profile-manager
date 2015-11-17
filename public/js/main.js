@@ -10,6 +10,7 @@ function init() {
   $('form.login').on('submit', formSubmit);
   $('div.profile').on('submit', 'form#profile', submitProfile);
   $('div.profile').on('submit', 'form#register', submitUser);
+  $('div.profile').on('submit', 'form#message', message);
   $('button#profile').on('click', loadProfile);
   $('button#others').on('click', loadProfiles);
   $('button#register').on('click', loadRegister);
@@ -24,6 +25,13 @@ function init() {
   });
 }
 
+function message(event) {
+  event.preventDefault();
+
+  $('div#show-error h4.error').text('The feature is not implemented, sorry, guys.');
+  $('div#show-error').modal();
+}
+
 function loadRegister() {
   $.ajax({
     method: 'GET',
@@ -34,8 +42,12 @@ function loadRegister() {
 }
 
 function sendMessage() {
-  $('div#show-error h4.error').text('The feature is not implemented.');
-  $('div#show-error').modal();
+  $.ajax({
+    method: 'GET',
+    url: '/message',
+    success: showProfile,
+    error: showError
+  });
 }
 
 function userCreated() {
@@ -54,7 +66,6 @@ function notLogged() {
 }
 
 function loginOK(data) {
-  console.log(data);
   user = data;
 
   $('button#profile').css('display', 'inline-block');
@@ -92,12 +103,9 @@ function showProfile(html) {
 function formSubmit(event) {
   event.preventDefault();
 
-console.log(user);
   if (user) {
-    console.log('loggintin out');
     logout();
   } else {
-    console.log('Logginf in');
     login();
   }
 }

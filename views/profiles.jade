@@ -10,7 +10,7 @@ table.table.table-striped.table-bordered.table-hover.contacts.users
         th
   tbody
     each user in users
-      tr
+      tr(id='id_' + user._id)
         td.text.name= user.name
         td.text.email= user.email
         td.text.address= user.address
