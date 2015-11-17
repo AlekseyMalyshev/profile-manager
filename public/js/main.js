@@ -9,8 +9,10 @@ var currentId;
 function init() {
   $('form.login').on('submit', formSubmit);
   $('div.profile').on('submit', 'form#profile', submitProfile);
+  $('div.profile').on('submit', 'form#register', submitUser);
   $('button#profile').on('click', loadProfile);
   $('button#others').on('click', loadProfiles);
+  $('button#register').on('click', loadRegister);
 
   $.ajax({
     method: 'GET',
@@ -19,6 +21,20 @@ function init() {
     success: loginOK,
     error: notLogged
   });
+}
+
+function loadRegister() {
+  $.ajax({
+    method: 'GET',
+    url: '/register',
+    success: showProfile,
+    error: showError
+  });
+}
+
+function userCreated() {
+  $('div#show-error h4.error').text('User create, please login.');
+  $('div#show-error').modal();
 }
 
 function notLogged() {
@@ -114,10 +130,9 @@ function showError(err) {
   $('div#show-error').modal();
 }
 
-function submitProfile(event) {
+function submitUser(event) {
   event.preventDefault();
-console.log($('input#pass').val());
-console.log($('input#_pass').val());
+
   if ($('input#pass').val() !== $('input#_pass').val()) {
     $('div#show-error h4.error').text('Passwords do not match.');
     $('div#show-error').modal();
@@ -125,7 +140,33 @@ console.log($('input#_pass').val());
 
   var user = {};
   user.name = $('input#name').val();
-  user.pass = $('input#pass').val();
+  user.pass = $('input#_pass').val();
+
+  $.ajax({
+    method: 'POST',
+    url: '/api/users/register',
+    data: user,
+    success: registered,
+    error: showError
+  });
+}
+
+function registered() {
+  $('div#show-error h4.error').text('You successfully registered. Please login.');
+  $('div#show-error').modal();
+}
+
+function submitProfile(event) {
+  event.preventDefault();
+
+  if ($('input#pass').val() !== $('input#_pass').val()) {
+    $('div#show-error h4.error').text('Passwords do not match.');
+    $('div#show-error').modal();
+  }
+
+  var user = {};
+  user.name = $('input#name').val();
+  user.pass = $('input#_pass').val();
   user.email = $('input#email').val();
   user.address = $('input#address').val();
   user.zipcode = $('input#zipcode').val();

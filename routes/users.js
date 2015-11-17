@@ -17,6 +17,7 @@ let checkError = (err, res, user) => {
 }
 
 router.post('/register', (req, res) => {
+  console.log(req.body);
   User.findOne({name: req.body.name}, (err, user) => {
     if (err) {
       checkError(err, res);

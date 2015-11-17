@@ -13,6 +13,7 @@ let userApi = require('./routes/users');
 let index = require('./routes/index');
 let profile = require('./routes/profile');
 let profiles = require('./routes/profiles');
+let register = require('./routes/register');
 
 
 let database = process.env.MONGOLAB_URI || 'mongodb://localhost/profileEditor';
@@ -35,6 +36,7 @@ app.use('/api/users', userApi);
 app.use('/', index);
 app.use('/profile', profile);
 app.use('/profiles', profiles);
+app.use('/register', register);
 
 let port = process.env.PORT || 3000;
 let listener = app.listen(port);
