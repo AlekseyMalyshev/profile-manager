@@ -13,6 +13,7 @@ function init() {
   $('button#profile').on('click', loadProfile);
   $('button#others').on('click', loadProfiles);
   $('button#register').on('click', loadRegister);
+  $('div.profile').on('click', 'a#message', sendMessage);
 
   $.ajax({
     method: 'GET',
@@ -30,6 +31,11 @@ function loadRegister() {
     success: showProfile,
     error: showError
   });
+}
+
+function sendMessage() {
+  $('div#show-error h4.error').text('The feature is not implemented.');
+  $('div#show-error').modal();
 }
 
 function userCreated() {
